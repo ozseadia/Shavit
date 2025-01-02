@@ -6,6 +6,8 @@ Created on Tue Nov 17 10:03:20 2020
 """
 import pandas as pd
 import openpyxl
+from openpyxl.utils.dataframe import dataframe_to_rows
+from openpyxl import Workbook
 from collections import Counter
 from datetime import datetime
 from datetime import date
@@ -72,9 +74,11 @@ def main (QT,C,Customer,file_path_C):
     #collecting customer data  Qty >0
     #-------------------------------------------------------------------------------------------
     MasterFileName=r'G:\Oz\Shavit\Master - orders status\example files\Status Report Master.xlsx'
-    wb =openpyxl.load_workbook(file_path_C)
+    #wb =openpyxl.load_workbook(file_path_C)
+    wb=Workbook()
     ws=wb.active
-    
+    for r in dataframe_to_rows(C, index=True, header=True):
+        ws.append(r)
     head_tail = os.path.split(MasterFileName)
     SavedFilePath=head_tail[0]+'\\' + Customer + str(date.today()) + '.xlsx'
     #order number + line number + PartNumber

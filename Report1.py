@@ -23,7 +23,7 @@ yellowfill = PatternFill(fill_type='solid', start_color='00FFFF00', end_color='0
 
 #FileName=r"G:\Oz\Shavit\Master - orders status\example files\Open PO_s.csv"
 #FileName=r"G:\Oz\Shavit\Master - orders status\example files\הזמנות לפי לקוח-82.xlsx"
-@st.cache_data()
+#@st.cache_data()
 def LoadData(FileName):
     #load the data
     #'''

@@ -38,7 +38,7 @@ file_path_QT=[]
 #GUI by streamlit
 
 #allow_output_mutation=True
-@st.cache_data()
+#@st.cache_data()
 def select_file(n):
     global file_path
     FileName = RE.SelectFile()
@@ -70,7 +70,7 @@ switcher = {
 def main():
     global file_path_C , file_path_QT 
 
-
+    file_path_C=''
     #global file_path   
     #Title1.title("<h1 style='text-align: Right; color: red;'>דוח הזמנות פתוחות</h1>")
     st.markdown("<h1 style='text-align: Right; color: Black;'>דוח הזמנות פתוחות</h1>", unsafe_allow_html=True)
@@ -80,17 +80,25 @@ def main():
     
     #N=st.text_input("Serial Number")
     #st.button('add')
-
-    if st.checkbox('בחר דוח לקוח'):
-        file_path_C=select_file(1)
+    col1 ,col2 = st.columns(2)
+    with col1:
+        FileNameC = st.file_uploader("בחר דוח לקוח", type=["xlsx"])
+        if FileNameC is not None: # Read the Excel file df = pd.read_excel(uploaded_file)
+            C=pd.read_excel(FileNameC)
+    with col2:
+        FileNameQ = st.file_uploader("בחר דוח שביט", type=["xlsx"])
+        if FileNameQ is not None: # Read the Excel file df = pd.read_excel(uploaded_file)
+            QT=pd.read_excel(FileNameQ)    
+    # if st.checkbox('בחר דוח לקוח'):
+    #     file_path_C=select_file(1)
     
-        C=RE.LoadData(file_path_C)
+    #     C=RE.LoadData(file_path_C)
     
         
             
-    if st.checkbox('בחר דוח שביט'):
-        file_path_QT=select_file(2)
-        QT=RE.LoadData(file_path_QT)
+    # if st.checkbox('בחר דוח שביט'):
+    #     file_path_QT=select_file(2)
+    #     QT=RE.LoadData(file_path_QT)
     
     if st.button('הכן דוח'):
         # Get the function from switcher dictionary
