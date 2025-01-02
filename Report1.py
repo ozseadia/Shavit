@@ -42,14 +42,15 @@ def LoadData(FileName):
         return (data)
 
 def SelectFile():
-    root = tk.Tk()
-    root.withdraw()
-    root.attributes("-topmost", True)
-    file_path = filedialog.askopenfilename()
-    #temp=file_path.split('/')
-    #temp[-1]=SN+'.xlsx'
-    #Result_file_path='/'.join(temp)
-    root.destroy()
+    # root = tk.Tk()
+    # root.withdraw()
+    # root.attributes("-topmost", True)
+    # file_path = filedialog.askopenfilename()
+    # #temp=file_path.split('/')
+    # #temp[-1]=SN+'.xlsx'
+    # #Result_file_path='/'.join(temp)
+    # root.destroy()
+    file_path = st.file_uploader("Choose an Excel file", type=["xlsx"])
     return (file_path)
 @st.cache_data()
 def main (QT,C,Customer):
