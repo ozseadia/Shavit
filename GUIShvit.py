@@ -10,6 +10,7 @@ import streamlit as st
 import tkinter as tk
 from tkinter import filedialog
 import Report1 as RE
+import ZivAv
 import Landa
 import Landa1
 import Kornit1
@@ -47,6 +48,7 @@ def select_file(n):
     return(FileName)
 
 
+
 def KornitR(QT,C,Customer,file_path_C):
     Kornit.main(QT,C,Customer)
  
@@ -58,12 +60,16 @@ def LandaR(QT,C,Customer,file_path_C):
          
 def Kinetics1(QT,C,Customer,file_path_C):
     Kinetics.main(QT,C,Customer,file_path_C)
-    
+def Zivav(QT,C,Customer,file_path_C):
+    ZivAv.main(QT,C,Customer,file_path_C)    
+
+
 switcher = {
         'Landa': LandaR,
         'Kornit': KornitR1,
         'Elbit' : KornitR,
-        'Kinetics':Kinetics1
+        'Kinetics':Kinetics1,
+        'ZivAv':Zivav
     }    
 
 #@st.cache() 
@@ -75,7 +81,7 @@ def main():
     #Title1.title("<h1 style='text-align: Right; color: red;'>דוח הזמנות פתוחות</h1>")
     st.markdown("<h1 style='text-align: Right; color: Black;'>דוח הזמנות פתוחות</h1>", unsafe_allow_html=True)
     #st.markdown("<h2 style='text-align: Right; color: Black;'>דוח הזמנות פתוחות</h1>", unsafe_allow_html=True)
-    Customer=st.selectbox('Select Customer',('','Landa', 'Kornit', 'Kinetics','Elbit'))
+    Customer=st.selectbox('Select Customer',('','Landa', 'Kornit', 'Kinetics','Elbit','ZivAv'))
     
     
     #N=st.text_input("Serial Number")
