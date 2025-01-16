@@ -19,6 +19,7 @@ import streamlit as st
 #from streamlit import caching
 import os
 import numpy as np
+from io import BytesIO
 redfill = PatternFill(fill_type='solid', start_color='00FF0000', end_color='00FF0000')
 greenfill = PatternFill(fill_type='solid', start_color='0000FF00', end_color='0000FF00')
 grayfill = PatternFill(fill_type='solid', start_color='00C0C0C0', end_color='00C0C0C0')
@@ -131,7 +132,16 @@ def main (QT,C,Customer,file_path_C):
         except:
             0
     #ws.cell(1,1).value=Customer
-    wb.save(SavedFilePath)
+    output = BytesIO()
+    #b.save(SavedFilePath)
+    wb.save(output)
+    # Rewind the buffer
+    output.seek(0)
+    st.download_button(label="Download Excel file", 
+                       data=output,
+                       file_name="sample.xlsx", 
+                       mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+
     
     '''    
     for i in range(len(L)):
