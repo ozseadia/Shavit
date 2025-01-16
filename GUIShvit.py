@@ -68,7 +68,7 @@ switcher = {
 
 #@st.cache() 
 def main():
-    global file_path_C , file_path_QT 
+    global file_path_C , file_path_QT ,C,QT
 
     file_path_C=''
     #global file_path   
@@ -99,15 +99,16 @@ def main():
     # if st.checkbox('בחר דוח שביט'):
     #     file_path_QT=select_file(2)
     #     QT=RE.LoadData(file_path_QT)
-    
-    if st.button('הכן דוח'):
-        # Get the function from switcher dictionary
-        
-        func = switcher.get(Customer)
-        # Execute the function
-        func(QT,C,Customer,file_path_C)
-        #RE.main(QT,C,Customer)
-        #Kornit.main(QT,C,Customer)
+    if FileNameQ and FileNameC:
+        if st.button('הכן דוח'):
+            
+            # Get the function from switcher dictionary
+            
+            func = switcher.get(Customer)
+            # Execute the function
+            func(QT,C,Customer,file_path_C)
+            #RE.main(QT,C,Customer)
+            #Kornit.main(QT,C,Customer)
 
     if st.button('Clear all'):
         #caching.clear_cache()

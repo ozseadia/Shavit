@@ -43,7 +43,7 @@ def LoadData(FileName):
     except:
         0
     return (data)
-
+@st.cache_data()
 def SelectFile():
     root = tk.Tk()
     root.withdraw()
@@ -54,7 +54,7 @@ def SelectFile():
     #Result_file_path='/'.join(temp)
     root.destroy()
     return (file_path)
-@st.cache_data()
+#@st.cache_data()
 def main (QT,C,Customer,file_path_C):
 
     L=C
@@ -87,13 +87,13 @@ def main (QT,C,Customer,file_path_C):
     print(List)
     #ws.cell(1,11).value='תאריך אספקה'
     cl=5
-    r=3
+    r=4
     ws.cell(1+r,12+cl).value='הערות'
     ws.cell(1+r,13+cl).value='יתרה לאספקה'
     ws.cell(1+r,14+cl).value='מספר הזמנה שביט'
     ws.cell(1+r,15+cl).value='מק"ט'
     ws.cell(1+r,16+cl).value='הפרש בימים'
-    r=2
+    r=3
     for i in range(len(L)):
         #ind=[]
         #element=str(L[L.keys()[2]][i])+str(L[L.keys()[3]][i])
@@ -132,6 +132,7 @@ def main (QT,C,Customer,file_path_C):
         except:
             0
     #ws.cell(1,1).value=Customer
+    ws.delete_rows(1,2)
     output = BytesIO()
     #b.save(SavedFilePath)
     wb.save(output)
